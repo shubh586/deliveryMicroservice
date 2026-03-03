@@ -10,4 +10,51 @@
     </parent>
 
     <artifactId>common</artifactId>
+
+
+    <packaging>jar</packaging>
+
+    <name>FoodExpress - Common Library</name>
+    <description>Shared DTOs, Events, Exceptions, and Utilities</description>
+
+
+    <dependencies>
+        <!-- Spring Web (for ResponseEntity, etc.) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+<!--            provided means: "I need this to compile, but don't bundle it in my JAR — the service that uses me will already have it."-->
+        </dependency>
+
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+<!--            No scope = compile (default) — always available.-->
+        </dependency>
+
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Don't create executable jar for this library. only create the .class files of the common module -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
