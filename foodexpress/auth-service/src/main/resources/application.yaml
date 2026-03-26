@@ -33,11 +33,11 @@ spring:
             token-uri: https://oauth2.googleapis.com/token
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
             user-name-attribute: sub
-  #kafka is remainin
+  #kafka is remaining
 jwt:
-  secret: ${JWT_SECRET:your-256-bit-secret-key-for-jwt-token-generation-change-this-in-production}
-  expiration: ${JWT_EXPIRATION:86400000} # 24 hrs
-  refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7d
+  secret: ${JWT_SECRET:"we can do something better in our life . just believe in the process"}
+  expiration: ${JWT_EXPIRATION:86400000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
 
 # oauth2 redi
 app:
