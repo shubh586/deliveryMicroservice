@@ -1,5 +1,8 @@
 package com.foodexpress.auth.config;
 
+import com.foodexpress.auth.oauth.CustomOauth2UserDetailService;
+import com.foodexpress.auth.oauth.OAuth2FailureHandler;
+import com.foodexpress.auth.oauth.OAuth2SuccessHandler;
 import com.foodexpress.auth.security.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +30,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final UserDetailsService customUserDetailsService;
     private final JwtAuthFilter jwtAuthFilter;
+    private final CustomOauth2UserDetailService customOauth2UserDetailService;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
+    private final OAuth2FailureHandler oAuth2FailureHandler;
 
     @Bean
     public SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -42,6 +48,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+                .oauth2Login(auth->auth
+                        .userInfoEndpoint(userInfo -> userInfo.userService(customOauth2UserDetailService))
+                        .successHandler(oAuth2SuccessHandler)
+                        .failureHandler(oAuth2FailureHandler))
+
                 .addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
