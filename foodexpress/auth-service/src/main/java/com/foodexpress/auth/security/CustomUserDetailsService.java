@@ -4,7 +4,8 @@ package com.foodexpress.auth.security;
 import com.foodexpress.auth.model.entity.User;
 import com.foodexpress.auth.repository.RefreshTokenRepository;
 import com.foodexpress.auth.repository.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

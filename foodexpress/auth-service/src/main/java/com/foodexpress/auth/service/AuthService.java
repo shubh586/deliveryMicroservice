@@ -48,7 +48,7 @@ public class AuthService {
         user = userRepository.save(user);
         logger.info("Register request saved new new user: {}",user.getEmail());
         /// usrevents . register event here
-        return  ;
+        return  generateTokenResponse(user) ;
     }
 
 
@@ -61,12 +61,22 @@ public class AuthService {
                 .expiresAt(jwtTokenProvider.getRefreshTokenExpiry())
                 .user(user)
                 .build();
-        refreshTokenRepository.save(RefreshToken);
-
+        refreshTokenRepository.save(refreshToken1);
+        return AuthResponse.TokenResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .tokenType("Bearer")
+                .expiresIn(86400L) // 24 hours in seconds
+                .user(AuthResponse.UserInfo.builder()
+                        .id(user.getId())
+                        .email(user.getEmail())
+                        .name(user.getName())
+                        .phone(user.getPhone())
+                        .profilePicture(user.getProfilePicture())
+                        .role(user.getRole())
+                        .createdAt(user.getCreatedAt())
+                        .build())
+                .build();
     }
 
-
-
-
-
-}
+    }

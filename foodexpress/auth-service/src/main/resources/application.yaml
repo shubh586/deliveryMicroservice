@@ -4,9 +4,9 @@ spring:
   application:
     name: auth-service
   datasource:
-    url:  jdbc:postgresql://${DB_HOST}:${DB_PORT}/auth_db
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url:  jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/auth_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -21,8 +21,8 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID:dummy-client-id}
+            client-secret: ${GOOGLE_CLIENT_SECRET:dummy-client-secret}
             scope:
               - email
               - profile
@@ -36,9 +36,10 @@ spring:
             user-name-attribute: sub
   #kafka is remaining
 jwt:
-  secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION}
-  refresh-expiration: ${JWT_REFRESH_EXPIRATION}
+  # Base64 encoded 256-bit default secret key for local testing
+  secret: ${JWT_SECRET:413F4428472B4B6250655368566D5970337336763979244226452948404D6351}
+  expiration: ${JWT_EXPIRATION:3600000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION:86400000}
 
 # oauth2 redi
 app:

@@ -35,7 +35,7 @@ public class SecurityConfig {
     private final OAuth2FailureHandler oAuth2FailureHandler;
 
     @Bean
-    public SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session->session
