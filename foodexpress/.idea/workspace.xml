@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d800b279-e7bf-4010-95b9-6f57fae77aa9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant/RestaurantServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant/model/entity/MenuCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant/model/entity/MenuItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant/model/entity/Restaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="65" />
+    <option name="cachedIndexableFilesCount" value="68" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -69,6 +76,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RestaurantServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
@@ -79,21 +87,44 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/shubh/Programming/microservice/foodexpress/notification-service/src/main/java/com/foodexpress/Main.java&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/shubh/Programming/microservice/foodexpress/restaurant-sevice-2/src/main/java/com/foodexpress/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.16891891&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/restaurant" />
       <recent name="$PROJECT_DIR$/auth-service" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="RestaurantServiceApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RestaurantServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="foodexpress-parent" />
       <method v="2">
@@ -127,6 +158,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RestaurantServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="restaurant-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.foodexpress.restaurant.RestaurantServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.foodexpress.restaurant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceRegistaryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="service-registry" />
@@ -138,7 +183,13 @@
     <list>
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.ServiceRegistaryApplication" />
+      <item itemvalue="Spring Boot.RestaurantServiceApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.RestaurantServiceApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -182,6 +233,12 @@
       <workItem from="1774634836223" duration="2335000" />
       <workItem from="1774671910940" duration="1336000" />
       <workItem from="1774778004625" duration="9661000" />
+      <workItem from="1774805170775" duration="2272000" />
+      <workItem from="1774811438508" duration="3164000" />
+      <workItem from="1774814624178" duration="374000" />
+      <workItem from="1774844668861" duration="4901000" />
+      <workItem from="1774858069266" duration="42000" />
+      <workItem from="1774873324281" duration="3692000" />
     </task>
     <servers />
   </component>
@@ -194,6 +251,17 @@
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -214,11 +282,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/restaurant-service/src/main/java/com/foodexpress/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/order-service/src/main/java/com/foodexpress/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="7" />
@@ -237,6 +300,16 @@
           <url>file://$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/service/UserService.java</url>
           <line>18</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/restaurant-service/restaurant/src/main/java/com/foodexpress/restaurant/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/restaurant-sevice-2/src/main/java/com/foodexpress/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/auth-service/src/main/java/com/foodexpress/auth/model/entity/RefreshToken.java</url>

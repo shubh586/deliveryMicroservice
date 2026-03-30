@@ -10,6 +10,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/api-gateway/service-registry/pom.xml" />
+        <option value="$PROJECT_DIR$/restaurant-service/restaurant/pom.xml" />
+        <option value="$PROJECT_DIR$/restaurant-sevice-2/pom.xml" />
       </set>
     </option>
   </component>
