@@ -52,19 +52,24 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpRequest request = exchange.getRequest().mutate()
+                .headers(headers -> {
+                    headers.remove(USER_ID_HEADER);
+                    headers.remove(USER_EMAIL_HEADER);
+                    headers.remove(USER_ROLE_HEADER);
+                })
+                .build();
         String path = request.getURI().getPath();
-
+        ServerWebExchange mutatedExchange = exchange.mutate().request(request).build();
 
         if (isPublicPath(request)) {
-            return chain.filter(exchange);
+            return chain.filter(mutatedExchange);
         }
 
         String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
 
         if (authHeader == null || !authHeader.startsWith(BEARER_PREFIX)) {
-
-            return chain.filter(exchange);
+            return onError(mutatedExchange, "Missing or invalid authorization header", HttpStatus.UNAUTHORIZED);
         }
 
         String token = authHeader.substring(BEARER_PREFIX.length());
@@ -84,29 +89,26 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 
         } catch (ExpiredJwtException e) {
             logger.warn("JWT token expired: {}", e.getMessage());
-            return onError(exchange, "Token expired", HttpStatus.UNAUTHORIZED);
+            return onError(mutatedExchange, "Token expired", HttpStatus.UNAUTHORIZED);
         } catch (SignatureException | MalformedJwtException e) {
             logger.warn("Invalid JWT token: {}", e.getMessage());
-            return onError(exchange, "Invalid token", HttpStatus.UNAUTHORIZED);
+            return onError(mutatedExchange, "Invalid token", HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
             logger.error("Error validating JWT token", e);
-            return onError(exchange, "Authentication error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return onError(mutatedExchange, "Authentication error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     private boolean isPublicPath(ServerHttpRequest request) {
         String path = request.getURI().getPath();
-        String method = request.getMethod() != null ? request.getMethod().name() : "";
-
+        request.getMethod();
+        String method = request.getMethod().name();
         if (PUBLIC_PATHS.stream().anyMatch(path::startsWith)) {
             return true;
         }
-
-
         if (path.startsWith("/api/restaurants") && "GET".equalsIgnoreCase(method)) {
             return !path.startsWith("/api/restaurants/my");
         }
-
         return false;
     }
 
