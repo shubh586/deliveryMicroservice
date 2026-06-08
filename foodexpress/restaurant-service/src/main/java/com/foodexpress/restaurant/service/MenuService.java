@@ -49,7 +49,7 @@ public class MenuService {
         category = menuCategoryRepository.save(category);
         logger.info("Category created: {} for restaurant: {}", category.getId(), restaurantId);
 
-        // List.of() or new ArrayList<>() instead of collections logic
+
         return RestaurantResponse.CategoryWithItems.builder()
                 .id(category.getId())
                 .name(category.getName())
