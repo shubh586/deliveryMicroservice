@@ -58,11 +58,9 @@ public class SecurityConfig {
                         "",
                         Collections.singletonList(new SimpleGrantedAuthority(userRole))
                 );
-
                 var auth = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()
                 );
-
                 org.springframework.security.core.context.SecurityContextHolder.getContext().setAuthentication(auth);
             }
 

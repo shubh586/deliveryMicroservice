@@ -36,6 +36,13 @@ spring:
           filters:
             - StripPrefix=0
 
+        # Order Service Routes
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**, /api/payments/**
+          filters:
+            - StripPrefix=0
 
         # Admin Routes  alag alag service me distributed hai ye
         - id: admin-auth
