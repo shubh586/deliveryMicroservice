@@ -39,9 +39,7 @@ public class DeliveryController {
         DeliveryResponse.DeliveryInfo delivery = deliveryService.getDeliveryByOrderId(orderId);
         return ResponseEntity.ok(ApiResponse.success(delivery));
     }
-
     // delivery Partner endpoints
-
     @PostMapping("/partner/register")
     @PreAuthorize("hasRole('DELIVERY_PARTNER')")
     @Operation(summary = "Register as delivery partner")
