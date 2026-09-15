@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/restaurants", "/api/restaurants/search", "/api/restaurants/filter").permitAll()
                         .requestMatchers("/api/restaurants/{id}", "/api/restaurants/{id}/menu").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new HeaderAuthenticationFilter(), BasicAuthenticationFilter.class);
@@ -48,7 +48,7 @@ public static class HeaderAuthenticationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String userId = request.getHeader("X-User-Id");
-        String RoleId = request.getHeader("X-Role-Id");
+        String RoleId = request.getHeader("X-User-Role");
         if (userId != null && RoleId != null) {
             UserDetails userDetails = new User(userId, "", Collections.singletonList(new SimpleGrantedAuthority(RoleId)));
             var authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());/// credetial null means it is authenticated

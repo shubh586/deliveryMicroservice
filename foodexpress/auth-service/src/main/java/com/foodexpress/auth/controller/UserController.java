@@ -22,11 +22,12 @@ import org.springframework.data.domain.Pageable;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@Tag(name=" user controller" , description = "fetching the current use details")
+@Tag(name = "User Management", description = "User profile and administration endpoints")
 public class UserController {
     private final UserService userService;
 
     @GetMapping("/user/me")
+    @Operation(summary = "Get current user profile")
     public ResponseEntity<ApiResponse<AuthResponse.UserInfo>>  getCurrentUser(@RequestHeader ("X-User-Id") String userId) {
         AuthResponse.UserInfo user =userService.getCurrentUser(userId);
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(user));

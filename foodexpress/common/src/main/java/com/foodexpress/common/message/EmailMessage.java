@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -35,6 +36,7 @@ public class EmailMessage {
     private String messageId;
     private String type;
     private String to;
+    private List<String> cc;
     private String subject;
     private String templateName;
     private Map<String, Object> templateData;

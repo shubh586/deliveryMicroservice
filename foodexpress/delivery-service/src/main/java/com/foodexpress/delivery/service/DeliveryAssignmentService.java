@@ -1,6 +1,7 @@
 package com.foodexpress.delivery.service;
 
 import com.foodexpress.common.enums.DeliveryStatus;
+import com.foodexpress.delivery.kafka.DeliveryEventPublisher;
 import com.foodexpress.delivery.model.entity.Delivery;
 import com.foodexpress.delivery.model.entity.DeliveryPartner;
 import com.foodexpress.delivery.repository.DeliveryPartnerRepository;
@@ -22,6 +23,7 @@ public class DeliveryAssignmentService {
 
     private final DeliveryPartnerRepository partnerRepository;
     private final DeliveryRepository deliveryRepository;
+    private final DeliveryEventPublisher eventPublisher;
 
 
     @Transactional
@@ -63,6 +65,9 @@ public class DeliveryAssignmentService {
         delivery.setEstimatedDeliveryMinutes(25);
         deliveryRepository.save(delivery);
 
+        // Publish delivery assigned event to Kafka
+        eventPublisher.publishDeliveryAssigned(delivery);
+
         logger.info("Delivery partner {} assigned to order {}", partner.getId(), delivery.getOrderId());
         return true;
     }
@@ -77,3 +82,4 @@ public class DeliveryAssignmentService {
         });
     }
 }
+

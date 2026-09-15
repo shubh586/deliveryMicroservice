@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .pathMatchers("/oauth2/**").permitAll()
                         .pathMatchers("/login/oauth2/**").permitAll()
                         .pathMatchers("/actuator/**").permitAll()
-                        .pathMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .pathMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/webjars/**").permitAll()
                         .pathMatchers("/api/restaurants", "/api/restaurants/{id}", "/api/restaurants/{id}/menu").permitAll()
                       //allow all other also. jwt fileter will validate it
                         .anyExchange().permitAll()

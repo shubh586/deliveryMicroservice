@@ -91,6 +91,7 @@ public class MenuService {
                 .isVegetarian(request.getIsVegetarian() != null ? request.getIsVegetarian() : false)
                 .isVegan(request.getIsVegan() != null ? request.getIsVegan() : false)
                 .isSpicy(request.getIsSpicy() != null ? request.getIsSpicy() : false)
+                .isAvailable(request.getIsAvailable() != null ? request.getIsAvailable() : true)
                 .preparationTime(request.getPreparationTime() != null ? request.getPreparationTime() : 15)
                 .calories(request.getCalories())
                 .build();

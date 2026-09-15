@@ -18,7 +18,6 @@
         <relativePath/>
     </parent>
     <modules>
-<!--        <module>common</module>-->
         <module>common</module>
         <module>api-gateway</module>
         <module>service-registry</module>
@@ -27,7 +26,6 @@
         <module>order-service</module>
         <module>delivery-service</module>
         <module>notification-service</module>
-        <module>restaurant-service</module>
     </modules>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

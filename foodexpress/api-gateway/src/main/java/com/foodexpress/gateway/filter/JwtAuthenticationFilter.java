@@ -42,9 +42,10 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             "/api/auth/refresh",
             "/oauth2/",
             "/login/oauth2/",
-            "/actuator/",
-            "/swagger-ui/",
-            "/v3/api-docs/"
+            "/actuator",
+            "/swagger-ui",
+            "/v3/api-docs",
+            "/webjars"
     );
 
     @Value("${jwt.secret}")

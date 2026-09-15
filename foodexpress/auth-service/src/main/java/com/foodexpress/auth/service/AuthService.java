@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -31,6 +32,7 @@ public class AuthService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
 
 
     //public AuthResponse.TokenResponse register(AuthRequest.Register request)
@@ -43,7 +45,7 @@ public class AuthService {
         }
         User user= User.builder()
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .role(request.getRole() != null ? request.getRole() : Role.ROLE_CUSTOMER)
                 .provider("LOCAL")

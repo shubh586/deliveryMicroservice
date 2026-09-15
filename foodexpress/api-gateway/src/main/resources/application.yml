@@ -44,6 +44,14 @@ spring:
           filters:
             - StripPrefix=0
 
+        # Delivery Service Routes
+        - id: delivery-service
+          uri: lb://delivery-service
+          predicates:
+            - Path=/api/deliveries/**
+          filters:
+            - StripPrefix=0
+
         # Admin Routes  alag alag service me distributed hai ye
         - id: admin-auth
           uri: lb://auth-service
@@ -58,6 +66,35 @@ spring:
             - Path=/api/admin/restaurants/**
           filters:
             - StripPrefix=0
+
+        # OpenAPI Docs Routes
+        - id: auth-docs
+          uri: lb://auth-service
+          predicates:
+            - Path=/v3/api-docs/auth
+          filters:
+            - SetPath=/v3/api-docs
+
+        - id: restaurant-docs
+          uri: lb://restaurant-service
+          predicates:
+            - Path=/v3/api-docs/restaurants
+          filters:
+            - SetPath=/v3/api-docs
+
+        - id: order-docs
+          uri: lb://order-service
+          predicates:
+            - Path=/v3/api-docs/orders
+          filters:
+            - SetPath=/v3/api-docs
+
+        - id: delivery-docs
+          uri: lb://delivery-service
+          predicates:
+            - Path=/v3/api-docs/deliveries
+          filters:
+            - SetPath=/v3/api-docs
 
   data:
     redis:
@@ -76,7 +113,7 @@ eureka:
 
 
 jwt:
-  secret: ${JWT_SECRET:hellooo whaiwnefienfioxw,eewmdekxteomxxienix exnfionawenjjew}
+  secret: ${JWT_SECRET:413F4428472B4B6250655368566D5970337336763979244226452948404D6351}
 
 
 logging:
@@ -93,3 +130,19 @@ management:
   endpoint:
     gateway:
       enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Auth Service
+        url: /v3/api-docs/auth
+      - name: Restaurant Service
+        url: /v3/api-docs/restaurants
+      - name: Order Service
+        url: /v3/api-docs/orders
+      - name: Delivery Service
+        url: /v3/api-docs/deliveries
+

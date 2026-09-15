@@ -3,6 +3,7 @@ package com.foodexpress.delivery.service;
 import com.foodexpress.common.enums.DeliveryStatus;
 import com.foodexpress.common.exception.BadRequestException;
 import com.foodexpress.common.exception.ResourceNotFoundException;
+import com.foodexpress.delivery.kafka.DeliveryEventPublisher;
 import com.foodexpress.delivery.model.dto.DeliveryResponse;
 import com.foodexpress.delivery.model.entity.Delivery;
 import com.foodexpress.delivery.model.entity.DeliveryPartner;
@@ -28,6 +29,7 @@ public class DeliveryService {
 
     private final DeliveryRepository deliveryRepository;
     private final DeliveryPartnerRepository partnerRepository;
+    private final DeliveryEventPublisher eventPublisher;
     private final DeliveryAssignmentService assignmentService;
 
     @Transactional(readOnly = true)
@@ -94,6 +96,9 @@ public class DeliveryService {
         delivery.setPickedUpAt(Instant.now());
         delivery = deliveryRepository.save(delivery);
 
+        // Publish delivery picked up event to Kafka
+        eventPublisher.publishDeliveryPickedUp(delivery);
+
         logger.info("Order picked up for delivery: {}", deliveryId);
 
         return toDeliveryInfo(delivery);
@@ -146,6 +151,10 @@ public class DeliveryService {
             partner.setCurrentOrderId(null);
             partnerRepository.save(partner);
         }
+
+        // Publish delivery completed event to Kafka
+        eventPublisher.publishDeliveryCompleted(delivery);
+
         logger.info("Delivery completed: {}", deliveryId);
 
         return toDeliveryInfo(delivery);

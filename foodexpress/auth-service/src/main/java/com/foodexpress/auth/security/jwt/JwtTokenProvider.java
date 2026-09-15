@@ -54,6 +54,7 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .subject("refresh")
+                .id(java.util.UUID.randomUUID().toString())
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(expiry))
                 .signWith(getSigningKey())

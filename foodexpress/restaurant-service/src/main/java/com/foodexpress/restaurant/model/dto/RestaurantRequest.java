@@ -86,6 +86,7 @@ public class RestaurantRequest {
         private Boolean isVegetarian;
         private Boolean isVegan;
         private Boolean isSpicy;
+        private Boolean isAvailable;
         private Integer preparationTime;
         private Integer calories;
     }
